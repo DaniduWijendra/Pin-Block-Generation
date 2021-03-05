@@ -46,6 +46,7 @@ public class PinBlockProject extends Application {
     String error="";
     String pinBlock = "";
     String encryptBlock = "";
+    String decryptBlock = "";
     
     
     
@@ -95,7 +96,7 @@ public class PinBlockProject extends Application {
                       System.out.println("Success");
                      
                       a.setAlertType(Alert.AlertType.CONFIRMATION);
-                      a.setContentText("Clear Pin Block: " + pinBlock + "\nEncrypted Pin Block: " + encryptBlock);                       
+                      a.setContentText("Clear Pin Block: " + pinBlock + "\nEncrypted Pin Block: " + encryptBlock + "\nDecrypt Pin Block: " + decryptBlock);                       
                       a.show();
                   }
                   else
@@ -143,11 +144,12 @@ public class PinBlockProject extends Application {
                           System.out.println("TWK after decrypt " + decryptedKey);
                           System.out.println("Generated Pin Block: " + pinBlock);
                           encryptBlock = td.encrypt(pinBlock,decryptedKey);
+                          decryptBlock = td.decrypt(encryptBlock, decryptedKey);
                          
                           
                           System.out.println("Encrypted Pin Block: " + encryptBlock);
                           
-                          System.out.println(td.decrypt(encryptBlock, decryptedKey));
+                          System.out.println("Decrypted Pin Block: " + td.decrypt(encryptBlock, decryptedKey));
                           
                           
                          
